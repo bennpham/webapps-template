@@ -9,11 +9,24 @@ import javax.servlet.http.*;
 import javax.sql.DataSource;
 
 public class Test extends HttpServlet
-{		
+{
+	private DataSource datasource;
+	
+	
+	// Look up JNDI datasource only once at init
+	public void init(ServletConfig config) throws ServletException {
+		try {
+			Context envCtx = (Context) new InitialContext().lookup("java:comp/env");
+			datasource = (DataSource) envCtx.lookup("jdbc/TestDB");		
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	// Gets JDBC Connection for Connection Pooling
-	private Connection getConnection() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-		Class.forName("com.mysql.jdbc.Driver").newInstance();
-	    return DriverManager.getConnection(MyConstants.SQL_URL, MyConstants.USERNAME, MyConstants.PASSWORD);
+	private Connection getConnection() throws SQLException {
+	    return datasource.getConnection();
 	  }
 	
 	

@@ -4,7 +4,8 @@ javax.naming.Context,
 javax.naming.InitialContext,
 javax.naming.NamingException,
 javax.servlet.*,
-javax.servlet.http.*"
+javax.servlet.http.*,
+javax.sql.DataSource"
 %>
 
 HELLO WORLD!<br/>
@@ -16,8 +17,9 @@ This is JSP<br/><br/>
 	ResultSet rs = null;
 	
 	try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "testuser", "testpass");
+            Context envCtx = (Context) new InitialContext().lookup("java:comp/env");
+            DataSource datasource = (DataSource) envCtx.lookup("jdbc/TestDB");
+            connection = datasource.getConnection();
             // JDBC stuff
             ps = connection.prepareStatement("SELECT * FROM test WHERE ? LIKE '%test%'");
             ps.setString(1, "test");
