@@ -1,12 +1,10 @@
 import java.io.*;
 import java.sql.*;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import javax.sql.DataSource;
+
+import helperpackage.*;
 
 public class Test extends HttpServlet
 {		

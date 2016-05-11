@@ -4,7 +4,8 @@ javax.naming.Context,
 javax.naming.InitialContext,
 javax.naming.NamingException,
 javax.servlet.*,
-javax.servlet.http.*"
+javax.servlet.http.*,
+helperpackage.*"
 %>
 
 HELLO WORLD!<br/>
@@ -17,7 +18,7 @@ This is JSP<br/><br/>
 	
 	try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "testuser", "testpass");
+            connection = DriverManager.getConnection(MyConstants.SQL_URL, MyConstants.USERNAME, MyConstants.PASSWORD);
             // JDBC stuff
             ps = connection.prepareStatement("SELECT * FROM test WHERE ? LIKE '%test%'");
             ps.setString(1, "test");

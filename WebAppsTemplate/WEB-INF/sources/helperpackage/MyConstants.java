@@ -1,7 +1,9 @@
 /*
  * All global constants goes here
  */
-public class MyConstants {
+package helperpackage;
+
+public final class MyConstants {
 	// MySQL Username
 	public static final String USERNAME = "testuser";
 	

@@ -6,10 +6,12 @@ How to compile...
 First cd to your sources folder then copy and paste the following codes
 
 LINUX
-sudo javac -cp "../lib/servlet-api.jar:../lib/mysql-connector-java-5.1.38-bin.jar:../lib/recaptcha4j-0.0.7.jar:../lib/javax.json-1.0.jar" *.java
+sudo javac -cp "../lib/servlet-api.jar:../lib/mysql-connector-java-5.1.38-bin.jar:../lib/recaptcha4j-0.0.7.jar:../lib/javax.json-1.0.jar" helperpackage/*.java *.java
 sudo mv *.class ../classes
+sudo mv helperpackage/*.class ../classes/helperpackage
 
 
 WINDOWS
-javac -cp "../lib/servlet-api.jar;../lib/mysql-connector-java-5.1.38-bin.jar;../lib/recaptcha4j-0.0.7.jar;../lib/javax.json-1.0.jar" *.java
+javac -cp "../lib/servlet-api.jar;../lib/mysql-connector-java-5.1.38-bin.jar;../lib/recaptcha4j-0.0.7.jar;../lib/javax.json-1.0.jar" helperpackage/*.java *.java
 mv *.class ../classes
+mv helperpackage/*.class ../classes/helperpackage
