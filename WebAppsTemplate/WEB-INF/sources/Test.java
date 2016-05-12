@@ -8,7 +8,7 @@ import helperpackage.*;
 
 public class Test extends HttpServlet
 {		
-	// Gets JDBC Connection for Connection Pooling
+	// Create New Connection
 	private Connection getConnection() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
 	    return DriverManager.getConnection(MyConstants.SQL_URL, MyConstants.USERNAME, MyConstants.PASSWORD);
